@@ -1,0 +1,487 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        .rounded-box {
+    
+            border-radius: 10px;
+        }
+
+        .logo-bar {
+                background-color: #587135;
+                height: 150px; /* Increased height */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+    
+            .logo-bar img {
+                height: 150px; /* Make image height 100px for square fit */
+                width: 150px;  /* Ensure it's a perfect square */
+                object-fit: contain;
+            }
+    
+            /* Second Bar (Search Bar, Icons) */
+            .second-bar {
+                background-color: #f4f4f4;
+                padding: 10px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+    
+ /* Search Bar */
+ .search-bar {
+                display: flex;
+                align-items: center;
+                background-color: white;
+                border-radius: 25px;
+                padding: 5px 15px;
+                border: 1px solid #ccc;
+                width: 100%;
+                max-width: 600px;
+                height: 36px;
+            }
+    
+            .search-bar input {
+                border: none;
+                outline: none;
+                width: 100%;
+                font-size: 14px;
+            }
+    
+            .search-bar button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: #A9A9A9;
+                font-size: 16px;
+                padding-right: 10px;
+            }
+
+            /* Icons on the Right */
+            .right-icons {
+                display: flex;
+                gap: 25px;
+                align-items: center;
+            }
+    
+            .right-icons i {
+                font-size: 20px;
+                cursor: pointer;
+                color: #A9A9A9;
+            }
+    
+            /* Navigation Bar */
+            .nav-bar {
+                background-color: #f4f4f4;
+                padding: 10px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+    
+            .nav-bar a {
+                flex: 1;
+                text-align: center;
+                text-decoration: none;
+                color: #000;
+                font-size: 16px;
+                font-weight: 500;
+                transition: color 0.3s;
+            }
+    
+            .nav-bar a:hover {
+                color: #587135;
+            }
+
+        .col-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: black;
+            font-size: 18px;
+            height: 100%;
+        }
+
+        .carousel-inner {
+  height: 300px; /* Set to your desired height */
+  overflow: hidden; /* Ensures that images don't overflow the fixed height */
+}
+
+.carousel-item img {
+  object-fit: cover; /* Ensures that the images cover the entire div without distortion */
+  height: 100%; /* Ensures that the image covers the fixed height */
+  width: 100%; /* Makes the image take up full width */
+}
+
+.square {
+    position: relative;
+    padding-top: 100%; /* This creates a square aspect ratio */
+    overflow: hidden; /* Ensures that the images stay within the square bounds */
+}
+
+.square img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover; /* Ensures the image covers the square without distortion */
+    width: 100%; /* Makes the image take up the full width */
+    height: 100%; /* Makes the image take up the full height */
+
+}
+
+
+
+.moving-text {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .scroll-content {
+        display: inline-flex;
+        white-space: nowrap;
+        animation: infiniteScroll 20s linear infinite;
+        overflow: hidden;
+    }
+
+          .scroll-content .bullet {
+            margin-right: 2rem;
+            /* Add space between bullet points */
+            font-size: 2rem;
+            color: white;
+            overflow: hidden;
+        }
+
+    @keyframes infiniteScroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+
+body {
+    overflow-x: hidden;
+
+    /* Cart Sidebar */
+    .cart-sidebar {
+                position: fixed;
+                top: 0;
+                right: -470px; /* Hidden initially (increased width by 70px) */
+                width: 470px; /* Increased width by 70px */
+                height: 100%;
+                background-color: #587135; /* Light green with transparency */
+            opacity: 100%;
+                transition: right 0.3s ease-in-out;
+                padding: 20px;
+               box-shadow: #808080;
+            }
+    
+            .cart-sidebar.open {
+                right: 0; /* Slide in */
+            }
+    
+            .cart-sidebar .cart-header {
+                color: white; /* Cart text color */
+                padding: 15px;
+                margin-bottom: 15px;
+                text-align: left; /* Align to left */
+                font-size: 20px;
+                font-weight: normal; /* Removed bold font */
+                border-bottom: 2px solid #C89269; /* White stroke */
+                opacity: 100%;
+            }
+    
+            .cart-sidebar .product-tab {
+    background-color: #587135;
+    padding: 15px;
+    border-color: #C89269;
+    border: 5px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 18px;
+    font-weight: lighter ; /* Reduced boldness */
+    position: relative;
+    color: #ffffff; /* Grey text color */
+    opacity: 100%;
+}
+
+.cart-sidebar .product-tab .remove-item {
+    margin-right: 10px; /* Space between the trash icon and product name */
+    cursor: pointer;
+    color: rgb(8, 47, 1); /* Grey trash bin icon */
+    font-size: 20px;
+    opacity: ;
+}
+
+.cart-sidebar .product-tab h4 {
+    margin: 0;
+    font-size: 16px;
+    flex-grow: 1;
+    text-align: left;
+}
+
+            .checkout-button {
+                position: absolute;
+                bottom: 20px;
+                left: 20px;
+                background-color: #587135;
+                color: #C89269;
+                padding: 15px 30px;
+                border: none;
+                border-radius: 25px;
+                font-size: 18px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+    
+            .checkout-button:hover {
+                background-color: #132d14;
+            }
+    
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .nav-bar {
+                    flex-direction: column;
+                }
+    
+                .nav-bar a {
+                    flex: none;
+                    width: 100%;
+                    padding: 10px 0;
+                }
+    
+                .product-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+    
+                .cart-sidebar {
+                    width: 300px; /* Adjusted for smaller screens */
+                }
+            }
+
+
+
+    </style>
+</head>
+<body>
+
+    <a href="homepage.html"> <div class="logo-bar"> 
+            <img src="indu logo final .png" alt="Indu Ice Cream">
+        </div> </a>
+        <!-- Second Bar (Search Bar, Icons) -->
+        <div class="second-bar">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button><i class="fa fa-search"></i></button>
+            </div>
+            <div class="right-icons">
+                <i class="fa fa-cart-shopping" onclick="toggleCart()"></i>
+                <i class="fa fa-user"></i>
+            </div>
+        </div>
+    
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <a href="homepage.html">Home</a>
+            <a href="product page.html">Menu</a>
+            <a href="about us.html">About</a>
+            <a href="locate.html">Contact</a>
+        </div>
+        
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators (Dots) -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+      
+        <!-- Carousel Items -->
+        <div class="carousel-inner">
+          <!-- First Image -->
+          <div class="carousel-item active">
+            <img src="carousel 1.jpg" class="d-block w-100" alt="First Image">
+          </div>
+          <!-- Second Image -->
+          <div class="carousel-item">
+            <img src="carousel 2.jpg" class="d-block w-100" alt="Second Image">
+          </div>
+          <!-- Third Image -->
+          <div class="carousel-item">
+            <img src="carousel 1.jpg" class="d-block w-100" alt="Third Image">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row mx-auto bg-light my-3 pt-3 m-0" style="height: 60vh;">
+        <!-- New Launches Section -->
+        <div class="row p-0 m-0 mx-auto" style="height: 15vh;">
+            <h1 class="text-start my-auto ms-5">New Launches</h1> <!-- Left-aligned text -->
+        </div>
+        <div class="row px-5 m-0 mx-auto gap-3" style="height: 45vh;">
+            <div class="col rounded-box mx-auto" style="height: 45vh; overflow: hidden;">
+                <div class="image-container">
+                    <img src="NL 1.jpg" alt="New Launch 1" class="d-block w-100 h-100 rounded-4" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col rounded-box mx-auto" style="height: 45vh; overflow: hidden;">
+                <div class="image-container">
+                    <img src="NL 2.jpg" alt="New Launch 2" class="d-block w-100 h-100 rounded-4" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col rounded-box mx-auto" style="height: 45vh; overflow: hidden;">
+                <div class="image-container">
+                    <img src="NL 3.jpg" alt="New Launch 3" class="d-block w-100 h-100 rounded-4" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col rounded-box mx-auto" style="height: 45vh; overflow: hidden;">
+                <div class="image-container">
+                    <img src="NL 4.jpg" alt="New Launch 4" class="d-block w-100 h-100 rounded-4" style="object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="height: 15vh; margin-top: 20px; margin-bottom: 20px; "></div>
+
+    <div class="row"
+    style="height: 20vh; background-color: #50712c; margin-top: 20px; margin-bottom: 20px; position: relative; overflow:hidden; display: flex; justify-content: center; align-items: center;">
+    <div class="moving-text">
+        <div class="scroll-content">
+            <span class="bullet">• Innovative Flavours</span>
+            <span class="bullet">• Cultural Nostalgia</span>
+            <span class="bullet">• All Natural</span>
+            <span class="bullet">• No Preservatives</span>
+            <span class="bullet">• Innovative Flavours</span>
+            <span class="bullet">• Cultural Nostalgia</span>
+            <span class="bullet">• All Natural</span>
+            <span class="bullet">• No Preservatives</span>
+            <span class="bullet">• Innovative Flavours</span>
+            <span class="bullet">• Cultural Nostalgia</span>
+            <span class="bullet">• All Natural</span>
+            <span class="bullet">• No Preservatives</span>
+            <span class="bullet">• Innovative Flavours</span>
+            <span class="bullet">• Cultural Nostalgia</span>
+            <span class="bullet">• All Natural</span>
+            <span class="bullet">• No Preservatives</span>
+        </div>
+    </div>
+</div>
+    
+    <div class="row mx-auto my-3 p-0 m-0" style="height: 60vh;">
+        <!-- Reviews Section -->
+        <div class="row p-0 m-0 mx-auto" style="height: 15vh;">
+            <h1 class="text-start my-auto ms-5">Reviews</h1> <!-- Left-aligned text -->
+        </div>
+        <div class="row px-5 m-0 mx-auto gap-3" style="height: 45vh;">
+            <div class="col rounded-box mx-auto" style=" overflow: hidden;">
+                <div class="image-container">
+                    <img src="Asset 1.png" alt="Review 1" class="d-block w-100 h-100 rounded-4" style="object-fit:cover;">
+                </div>
+            </div>
+            <div class="col rounded-box mx-auto" style="height: 45vh; overflow: hidden;">
+                <div class="image-container">
+                    <img src="Asset 3.png" alt="Review 2" class="d-block w-100 h-100 rounded-4" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col rounded-box mx-auto" style="height: 45vh; overflow: hidden;">
+                <div class="image-container">
+                    <img src="Asset 4.png" alt="Review 3" class="d-block w-100 h-100 rounded-4" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col rounded-box mx-auto" style="height: 45vh; overflow: hidden;">
+                <div class="image-container">
+                    <img src="Asset 5.png" alt="Review 4" class="d-block w-100 h-100 rounded-4" style="object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+    <div style="width: 100%; overflow: hidden; margin-top: 10vh;">
+        <img src="bottom.png" alt="Full Width Image" style="width: 100%; height:100%;">
+    </div>
+
+  
+<!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">Your Cart</div>
+    <div class="product-tab">
+        <img style="height: 50px; width: 50px;" src="ice 9.jpg" alt="Chocolate Ice Cream">
+        <h4 style="padding-left: 20px;">Chocolate Ice Cream</h4>
+        <i class="fa fa-trash remove-item"></i>
+    </div>
+    <div class="product-tab">
+        <img style="height: 50px; width: 50px;" src="ice 1.jpeg.avif" alt="Vanilla Ice Cream">
+        <h4 style="padding-left: 20px;">Vanilla Ice Cream</h4>
+        <i class="fa fa-trash remove-item"></i>
+    </div>
+    <!-- Add other products similarly in cart sidebar -->
+    <div class="checkout-button">Checkout</div>
+</div>
+
+<script>
+    function toggleCart() {
+        const cartSidebar = document.getElementById('cartSidebar');
+        cartSidebar.classList.toggle('open');
+    }
+
+    // Close the cart sidebar when clicking outside
+    window.addEventListener('click', function(event) {
+        const cartSidebar = document.getElementById('cartSidebar');
+        if (!cartSidebar.contains(event.target) && !document.querySelector('.fa-cart-shopping').contains(event.target)) {
+            cartSidebar.classList.remove('open');
+        }
+    });
+</script>
+         
+            
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+

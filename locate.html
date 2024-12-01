@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .logo-bar {
+            background-color: #587135;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-bar img {
+            height: 150px;
+            width: 150px;
+            object-fit: contain;
+        }
+
+        .second-bar {
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 25px;
+            padding: 5px 15px;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 600px;
+            height: 36px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .search-bar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #A9A9A9;
+            font-size: 16px;
+            padding-right: 10px;
+        }
+
+        .right-icons {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .right-icons i {
+            font-size: 20px;
+            cursor: pointer;
+            color: #A9A9A9;
+        }
+
+        .nav-bar {
+            background-color: #f4f4f4;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-bar a {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-weight: lighter;
+            transition: color 0.3s;
+        }
+
+        .nav-bar a:hover {
+            color: #587135;
+        }
+
+        .checkout-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: #587135;
+            color: #C89269;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-button:hover {
+            background-color: #132d14;
+        }
+
+        .secondary-button {
+            background-color: #1d411e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .secondary-button:hover {
+            background-color: #132d14;
+        }
+
+        .footer-image {
+            width: 100%;
+            height: auto;
+            margin-top: auto;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+                position: fixed;
+                top: 0;
+                right: -470px; /* Hidden initially (increased width by 70px) */
+                width: 470px; /* Increased width by 70px */
+                height: 100%;
+                background-color: #587135; /* Light green with transparency */
+            opacity: 100%;
+                transition: right 0.3s ease-in-out;
+                padding: 20px;
+               box-shadow: #808080;
+            }
+    
+            .cart-sidebar.open {
+                right: 0; /* Slide in */
+            }
+    
+            .cart-sidebar .cart-header {
+                color: white; /* Cart text color */
+                padding: 15px;
+                margin-bottom: 15px;
+                text-align: left; /* Align to left */
+                font-size: 20px;
+                font-weight: normal; /* Removed bold font */
+                border-bottom: 2px solid #C89269; /* White stroke */
+                opacity: 100%;
+            }
+    
+            .cart-sidebar .product-tab {
+    background-color: #587135;
+    padding: 15px;
+    border-color: #C89269;
+    border: 5px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 18px;
+    font-weight: lighter ; /* Reduced boldness */
+    position: relative;
+    color: #ffffff; /* Grey text color */
+    opacity: 100%;
+}
+
+.cart-sidebar .product-tab .remove-item {
+    margin-right: 10px; /* Space between the trash icon and product name */
+    cursor: pointer;
+    color: rgb(8, 47, 1); /* Grey trash bin icon */
+    font-size: 20px;
+    opacity: ;
+}
+
+.cart-sidebar .product-tab h4 {
+    margin: 0;
+    font-size: 16px;
+    flex-grow: 1;
+    text-align: left;
+}
+
+            .checkout-button {
+                position: absolute;
+                bottom: 20px;
+                left: 20px;
+                background-color: #587135;
+                color: #C89269;
+                padding: 15px 30px;
+                border: none;
+                border-radius: 25px;
+                font-size: 18px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+    
+            .checkout-button:hover {
+                background-color: #132d14;
+            }
+    
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .nav-bar {
+                    flex-direction: column;
+                }
+    
+                .nav-bar a {
+                    flex: none;
+                    width: 100%;
+                    padding: 10px 0;
+                }
+    
+                .product-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+    
+                .cart-sidebar {
+                    width: 300px; /* Adjusted for smaller screens */
+                }
+            }
+
+    </style>
+</head>
+<body>
+    <a href="homepage.html"> <div class="logo-bar"> 
+        <img src="logo.jpg" alt="Indu Ice Cream"> </a>
+    </div>
+    <div class="second-bar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button><i class="fa fa-search"></i></button>
+        </div>
+        <div class="right-icons">
+            <i class="fa fa-cart-shopping" onclick="toggleCart()"></i>
+            <i class="fa fa-user"></i>
+        </div>
+    </div>
+
+    <div class="nav-bar">
+        <a href="homepage.html">Home</a>
+        <a href="product page.html">Menu</a>
+        <a href="about us.html">About</a>
+        <a href="locate.html">Contact</a>
+    </div>
+
+    <div class="container row mx-auto bg-white content" style="height: 60vh;">
+        <div class="col bg-white m-3" style="border;border-radius: 5vh;">
+            <a href="https://maps.app.goo.gl/pc3EmU9XDTZejnJb7">
+            <img src="map.png" alt="" style="height:60vh; border-radius: 5vh"></a>
+        </div>
+        <div class="col bg-white m-3" style="border;border-radius: 5vh;">
+            <div class="search-bar bg-white m-2" style="height: 10vh ;border;border-radius: 5vh;">
+                <input type="text" placeholder="Name" style="border;border-radius: 5vh;">
+            </div>
+            <div class="search-bar bg-white m-2" style="height: 10vh ;border;border-radius: 5vh;">
+                <input type="text" placeholder="Email" style="border;border-radius: 5vh;">
+            </div>
+            <div class="search-bar bg-white m-2" style="height: 20vh ;border;border-radius: 5vh;">
+                <input type="text" placeholder="Message" style="border;border-radius: 5vh;">
+            </div>
+            <div class="bg-white m-2" style="height: 10vh ;border;border-radius: 5vh;">
+                <button class="secondary-button">Submit</button>
+            </div>
+        </div>
+    </div>
+    <img src="indu  last.png" alt="Full Width Image" class="footer-image">
+
+<!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">Your Cart</div>
+    <div class="product-tab">
+        <img style="height: 50px; width: 50px;" src="ice 9.jpg" alt="Chocolate Ice Cream">
+        <h4 style="padding-left: 20px;">Chocolate Ice Cream</h4>
+        <i class="fa fa-trash remove-item"></i>
+    </div>
+    <div class="product-tab">
+        <img style="height: 50px; width: 50px;" src="ice 1.jpeg.avif" alt="Vanilla Ice Cream">
+        <h4 style="padding-left: 20px;">Vanilla Ice Cream</h4>
+        <i class="fa fa-trash remove-item"></i>
+    </div>
+    <!-- Add other products similarly in cart sidebar -->
+    <div class="checkout-button">Checkout</div>
+</div>
+
+<script>
+    function toggleCart() {
+        const cartSidebar = document.getElementById('cartSidebar');
+        cartSidebar.classList.toggle('open');
+    }
+
+    // Close the cart sidebar when clicking outside
+    window.addEventListener('click', function(event) {
+        const cartSidebar = document.getElementById('cartSidebar');
+        if (!cartSidebar.contains(event.target) && !document.querySelector('.fa-cart-shopping').contains(event.target)) {
+            cartSidebar.classList.remove('open');
+        }
+    });
+</script>
+
+
+</body>
+</html>
